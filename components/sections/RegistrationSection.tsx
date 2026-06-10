@@ -140,7 +140,16 @@ export default function RegistrationSection() {
 
       const notes = [data.notes, memberNotes].filter(Boolean).join(" | ");
 
-      const result = await submitAttendee({ ...data, churchName, notes });
+      const result = await submitAttendee({
+        ...data,
+        churchName,
+        notes,
+        gender: data.gender ?? "",
+        county: data.county ?? "",
+        town: data.town ?? "",
+        churchLocation: data.churchLocation ?? "",
+        position: data.position ?? ""
+      });
 
       if (result.isDuplicate) {
         setDupError("This phone number or email is already registered!");
